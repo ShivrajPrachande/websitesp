@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photography</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+            background: gray;
+        }
+        .container{
+            position: relative;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin:auto;
+            background: #f2f2f2;
+            overflow: auto;
+        }
+        .container .image-container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            padding: 10px;
+        }
+        .container .image-container .image{
+            height: 300px;
+            width: 350px;
+            border: 10px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,1);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .container .image-container .image img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: linear;
+        }
+        .container .image-container .image:hover img{
+            transform: scale(1.1);
+        }
+        .container .popup-image{
+            position: fixed;
+            top: 0; left: 0;
+            background: #111;
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+            display: none;
+        }
+        .container .popup-image span{
+            position: absolute;
+            top: 0; right: 10px;
+            font-size: 60px;
+            font-weight: bolder;
+            color: #fff;
+            cursor: pointer;
+            z-index: 100;
+        }
+        .container .popup-image img{
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            border: 5px solid #fff;
+            border-radius: 5px;
+            width: 750px;
+            object-fit: cover;
+        }
+        .btn-back
+        {
+            font-size: 16px;
+            font-weight: 500;
+            padding: 12px 35px;
+            margin-left: 50%;
+            color: white;
+            border-radius: 40px;
+            display: inline-block;
+            white-space: nowrap;
+            border: none;
+            background:red;
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover
+        {
+            transform: scale(1.05);
+        }
+        @media (max-width:768px){
+            .container .popup-image img{
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="row padd-15">Photography</h1>
+        <div class="image-container">
+        <div class="image">
+            <img src="photography/IMG_20230305_203845_822.jpg">
+        </div>
+        <div class="image">
+            <img src="photography/IMG_20230305_203849_333.jpg">
+        </div>
+        <div class="image">
+            <img src="photography/IMG_20230305_203854_692.jpg">
+        </div>
+        <div class="image">
+            <img src="photography/IMG_20230305_203858_500.jpg">
+        </div>
+        
+        </div>
+
+        <div class="popup-image">
+            <span>&times;</span>
+            <img src="photography/Image1.jpg" alt="">
+        </div>
+        <a href="index.html #portfolio" class="btn-back">Back</a>
+    </div>
+
+    <script>
+        document.querySelectorAll('.image-container img').forEach(image =>{
+            image.onclick = () =>{
+            document.querySelector('.popup-image').style.display = 'block';
+            document.querySelector('.popup-image img').src = image.getAttribute('src');
+            }
+        })
+
+        document.querySelector('.popup-image span').onclick = () =>{
+            document.querySelector('.popup-image').style.display = 'none';  
+        }
+    </script>
+</body>
+</html>
